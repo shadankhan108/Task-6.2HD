@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    tools{nodejs "nodejs"}
     environment {
         APP_NAME = 'Task6.2HD' // Replace with your application name
         EC2_USER = 'ubuntu' // Replace with your EC2 username (e.g., ec2-user, ubuntu)
