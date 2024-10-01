@@ -2,8 +2,8 @@
 module.exports = {
     apps: [
       {
-        name: "SeyCodes-App",
-        script: "server.js",
+        name: "task6.2hd",
+        script: "index.js",
         instances: "max",
         exec_mode: "cluster",
         env: {
