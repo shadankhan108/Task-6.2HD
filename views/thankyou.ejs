@@ -1,0 +1,93 @@
+<%- include('header'); -%>
+
+<main>
+    <div class="container">
+        <!-- Check if there are any errors -->
+        <% if (errors && errors.length > 0) { %>
+            <header>
+                <div class="container-fluid bg-primary-subtle">
+                    <div class="col-sm-8 mx-auto text-center py-2">
+                        <h1 class="display-4">Thank You for Joining dKin Caps!</h1>
+                        <p class="lead">We appreciate your membership and feedback on your favorite headwear!</p>
+                    </div>
+                </div>
+            </header>
+            <div class="alert alert-danger mt-4">
+                <h3 class="mt-3">There were a total of <%= errors.length %> errors in the form:</h3>
+                <ul>
+                    <% errors.forEach(function(error) { %>
+                        <li><%= error %></li>
+                    <% }) %>
+                </ul>
+                <a href="/" class="btn btn-danger mt-4">Return to Form</a>
+            </div>
+        <% } else { %>
+            <header>
+                <div class="container-fluid bg-primary-subtle">
+                    <div class="col-sm-8 mx-auto text-center py-2">
+                        <h1 class="display-4">Thank You for Joining dKin Caps!</h1>
+                        <p class="lead">We appreciate your membership and feedback on your favorite headwear!</p>
+                    </div>
+                </div>
+            </header>
+
+            <h3 class="mt-3">Thank you, <%= firstname || 'Valued Member' %> <%= surname || '' %>!</h3>
+
+            <p>We have successfully received the following details:</p>
+
+            <table class="table table-bordered mt-4">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>First Name</strong></td>
+                        <td><%= firstname || 'Not provided' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Name</strong></td>
+                        <td><%= surname || 'Not provided' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td><%= email || 'Not provided' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile Number</strong></td>
+                        <td><%= mobileNumber || 'Not provided' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Number of Caps Owned</strong></td>
+                        <td><%= inputNumCaps || 'Not specified' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Favourite Cap Style</strong></td>
+                        <td><%= capstyle || 'Not specified' %></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comments</strong></td>
+                        <td><%= comments || 'No comments provided' %></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Dynamically display message based on comment length -->
+            <div class="mt-4">
+                <% if (comments && comments.length < 20) { %>
+                    <p class="text-warning">Your comment was brief! We'd love to hear more from you next time.</p>
+                <% } else { %>
+                    <p class="text-success">Thank you for your detailed feedback! Your insights are valuable to us.</p>
+                <% } %>
+            </div>
+
+            <div class="mt-4">
+                <a href="/" class="btn btn-primary">Return to Home</a>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<%- include('footer'); -%>
